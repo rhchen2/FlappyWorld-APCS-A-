@@ -1,5 +1,13 @@
-package game;
+import javafx.scene.Node;
 
-public class Entity {
 
+
+public abstract class Entity {
+
+	protected Node node;
+	
+	
+	public abstract void update();
+	
+	public abstract Node getNode();
 }
