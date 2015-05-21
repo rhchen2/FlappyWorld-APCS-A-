@@ -1,8 +1,8 @@
 package game;
 
 public class Pipe extends Sprite {
-    public Pipe(){
-      
+    public Pipe(int x, int y, int width, int height, String img){
+        super(x, y, width, height, img);
     }
     public void update(){
     //checking for boundaries
