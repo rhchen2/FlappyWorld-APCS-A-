@@ -32,9 +32,9 @@ public class Bird extends Sprite{
 		jump.play();
 	}
 	public void update(){
-		jump.setToY(image.getY() + image.getTranslateY());
+		jump.setToY(image.translateYProperty());
 
-		if(image.getY() + image.getTranslateY() > 400){
+		if(image.translateYProperty() > 400){
 		}
 		
 	}
