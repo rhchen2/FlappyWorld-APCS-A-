@@ -44,19 +44,7 @@ public class FlappyBird extends GameWorld{
                 tl.getKeyFrames().add(drop);
                 tl.setAutoReverse(false);
                 tl.play();
-               
-                /*
-                TranslateTransition trans = new TranslateTransition(new Duration(3000), flappy);
-                trans.setToY(1000);
-                trans.setCycleCount(1);                
-                trans.setInterpolator(new Interpolator() {
-                                @Override
-                                protected double curve(double t) {
-                                        return 1.5 * t * t;
-                                }
-                        });  
-                        trans.play();
-                        */
+        
             }
         });
     }
@@ -85,21 +73,6 @@ public class FlappyBird extends GameWorld{
                 tl.getKeyFrames().add(flap);
                 tl.setAutoReverse(false);
                 tl.play();
-               
-                /*
-                TranslateTransition trans = new TranslateTransition(new Duration(3000), flappy);
-                trans.setByY(-1000);
-                trans.setCycleCount(1);
-                trans.setInterpolator(new Interpolator() {
-                                @Override
-                                protected double curve(double t) {
-                                        //acceleration = 1.5 (same as initial drop)
-                                        return .9 * t - 1.5 * t * t;
-                                }
-                        });  
-               
-                        trans.play();
-                */
 
             }
         });
