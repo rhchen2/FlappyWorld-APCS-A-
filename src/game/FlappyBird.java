@@ -104,8 +104,8 @@ public class FlappyBird extends GameWorld{
 		primaryStage.setScene(getGameSurface());
 		
 	}
-	public void updateSprites(){
-		bird.update();
+	public void updateEntities(){
+		super.updateEntities();
 	}
 
 }
