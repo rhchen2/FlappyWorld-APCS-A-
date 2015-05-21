@@ -15,12 +15,11 @@ public class Bird extends Sprite{
 	
 	public Bird(int x, int y, int width, int height, String img){
 		super(x, y, width, height, img);
-		jump = new TranslateTransition(Duration.millis(2000), image);
+		jump = new TranslateTransition(Duration.millis(3000), image);
 		jump.setCycleCount(Timeline.INDEFINITE);
 		jump.setInterpolator(new Interpolator(){
 			protected double curve(double t){
-				double a = 0.9;
-				return a * t * t + (1 - a) * t;
+				return .75 * t - 1.5 * t * t;
 			}
 		});
 
@@ -33,9 +32,9 @@ public class Bird extends Sprite{
 		jump.play();
 	}
 	public void update(){
-		jump.setToY(image.getY());
+		jump.setToY(image.getY() + image.getTranslateY());
 
-		if(image.getY() > 400){
+		if(image.getY() + image.getTranslateY() > 400){
 		}
 		
 	}
