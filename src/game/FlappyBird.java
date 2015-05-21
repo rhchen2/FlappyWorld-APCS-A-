@@ -82,6 +82,10 @@ public class FlappyBird extends GameWorld{
 		root = new Group();
 		bkg = new ImageView("background.png");
 		bird = new Bird(50, 50, 34, 24, "flappy.png");
+		Pipe p1 = new Pipe();
+		Pipe p2 = new Pipe();
+		
+		
 		String url = getClass().getResource("/flap.mp3").toString();
 		final Media media = new Media(url);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
@@ -92,6 +96,8 @@ public class FlappyBird extends GameWorld{
 			}
 		});
 		addEntity(bird);
+		addEntity(p1);
+		addEntity(p2);
 		
 		root.getChildren().add(bkg);
 		root.getChildren().add(bird.getNode());
