@@ -45,7 +45,10 @@ public abstract class GameWorld {
         // create and set timeline for the game loop
         buildAndSetGameLoop();
     }
-
+	
+    public boolean gameOver(){
+    	return gameOver;
+    }
     /**
      * Builds and sets the game loop ready to be started.
      */
@@ -55,7 +58,7 @@ public abstract class GameWorld {
     	
     	KeyFrame loop = new KeyFrame(frames, new EventHandler<ActionEvent>(){
     		public void handle(ActionEvent event){
-    			updateentities();
+    			updateEntities();
     			checkCollisions();
     		}
     	});
