@@ -29,7 +29,7 @@ public abstract class Sprite extends Entity{
     public abstract void update();
     
     public Rectangle getRect(){
-    	return null;
+    	return rect;
     }
 
     /**
