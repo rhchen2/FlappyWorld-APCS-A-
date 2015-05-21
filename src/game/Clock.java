@@ -1,5 +1,5 @@
 package game;
 
-public class Clock extends Extra {
+public class Clock{
 
 }
