@@ -87,7 +87,7 @@ public abstract class GameWorld {
      * method. The derived class should override handleUpdate() method.
      *
      */
-    protected void updateentities() {
+    protected void updateEntities() {
         for(Entity entity: entities){
         	entity.update();
         }
