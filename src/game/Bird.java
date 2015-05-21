@@ -11,6 +11,7 @@ public class Bird extends Sprite{
 
 	private boolean jumped = false;
 	public double startY;
+	private boolean killed = false;
 	private TranslateTransition jump;
 	
 	public Bird(int x, int y, int width, int height, String img){
@@ -35,17 +36,15 @@ public class Bird extends Sprite{
 		jump.setToY(image.translateYProperty());
 
 		if(image.translateYProperty() > 400){
+			killed = true;
 		}
 		
 	}
 	
-	public Rectangle getRect(){
-		return rect;
+	public boolean killed(){
+		return killed;
 	}
 	
-		
-	public Node getNode(){
-		return node;
-	}
+	
 	
 }
