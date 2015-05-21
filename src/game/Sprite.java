@@ -39,7 +39,7 @@ public abstract class Sprite extends Entity{
      * @return
      */
     public boolean collide(Sprite other){
-    	return this.getRect().intersects(other.getRect();
+    	return this.getRect().intersects(other.getRect());
     }
     
 }
