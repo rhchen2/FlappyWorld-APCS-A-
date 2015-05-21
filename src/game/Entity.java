@@ -9,5 +9,7 @@ public abstract class Entity {
 	
 	public abstract void update();
 	
-	public abstract Node getNode();
+	public Node getNode(){
+		return node;
+	}
 }
