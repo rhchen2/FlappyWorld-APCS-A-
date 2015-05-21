@@ -12,7 +12,5 @@ public class Pipe extends Sprite {
     //update the object
     
     }
-    public Node getNode(){
-      return node;
-    }
+    
 }
