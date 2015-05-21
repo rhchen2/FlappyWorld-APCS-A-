@@ -26,6 +26,8 @@ public abstract class GameWorld {
 
     /** Title in the application window.*/
     private final String windowTitle;
+    
+    private boolean gameOver = false;
 
     /**
      * The sprite manager.
@@ -105,7 +107,15 @@ public abstract class GameWorld {
      *
      */
     protected void checkCollisions() {
-        
+        for(Entity entityA: entities){
+        	for(Entity entityB: entities){
+        		if(entityA instanceof Sprite && entityB instanceof Sprite){
+        			if(((Sprite)entityA).collide((Sprite)entityB){
+        				gameover = true;
+        			}
+        		}
+        	}
+        }
         
     }
     
