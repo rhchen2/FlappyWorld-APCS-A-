@@ -15,6 +15,10 @@ import javafx.util.Duration;
 public abstract class GameWorld {
 
 	private ArrayList<Entity> entities;
+	
+	//List of objects that will kill Bird
+	private ArrayList<Sprite> enemies;
+	
     /** The JavaFX Scene as the game surface */
     private Scene gameSurface;
     /** All nodes to be displayed in the game window. */
@@ -42,6 +46,7 @@ public abstract class GameWorld {
      */
     public GameWorld(final int fps, final String title) {
     	entities = new ArrayList<Entity>();
+    	enemies = new ArrayList<Sprite>();
         framesPerSecond = fps;
         windowTitle = title;
         // create and set timeline for the game loop
@@ -113,11 +118,11 @@ public abstract class GameWorld {
      */
     protected void checkCollisions() {
         for(int i = 0; i < entities.size() - 1; i++){
-        	for(int j = i + 1; j < entities.size(); j++){
+        	for(int j = 0; j < enemies.size(); j++){
         		Entity a = entities.get(i);
-        		Entity b = entities.get(j);
-        		if(a instanceof Bird && (b instanceof Sprite && !(b instanceof Bird))){
-        			if(((Sprite)a).collide((Sprite)b)){
+        		Sprite b = enemies.get(j);
+        		if(a instanceof Bird){
+        			if(((Sprite)a).collide(b)){
         				gameOver = true;
         				System.out.println("Collide");
         			}
@@ -129,6 +134,9 @@ public abstract class GameWorld {
     
     public void addEntity(Entity entity){
     	entities.add(entity);
+    	if(entity instanceof Sprite && !(entity instanceof Bird)){
+    		enemies.add((Sprite)entity);
+    	}
     }
     public void removeEntity(Entity entity){
     	entities.remove(entity);

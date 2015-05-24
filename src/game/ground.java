@@ -7,7 +7,7 @@ public class Ground extends Sprite{
     }
     
     public void update(){
-    	image.setTranslateX(image.getTranslateX() - 1);
+    	image.setTranslateX(image.getTranslateX() - 2);
     	if(image.getX() + image.getTranslateX() < -400){
     		image.setX(400);
     		image.setTranslateX(0);

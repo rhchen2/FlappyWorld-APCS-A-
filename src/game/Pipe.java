@@ -10,7 +10,11 @@ public class Pipe extends Sprite {
     public void update(){
     //checking for boundaries
     //update the object
-    
+    	image.setTranslateX(image.getTranslateX() - 2);
+    	if(image.getX() + image.getTranslateX() < -52){
+    		image.setX(452);
+    		image.setTranslateX(0);
+    	}
     
     }
     

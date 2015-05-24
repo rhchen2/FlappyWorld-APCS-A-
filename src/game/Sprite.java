@@ -17,7 +17,7 @@ public abstract class Sprite extends Entity{
     /** velocity vector x direction */
         
     public Sprite(int x, int y, int width, int height, String img){
-    	rect = new Rectangle(x, y, x + width, y + height);
+    	rect = new Rectangle(x, y, width, height);
     	image = new ImageView(img);
     	image.setX(x);
     	image.setY(y);
