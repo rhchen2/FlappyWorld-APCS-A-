@@ -21,6 +21,8 @@ public class FlappyBird extends GameWorld{
 	
 	private Bird bird;
 	private MediaPlayer flap;
+	private Ground ground;
+	private Ground ground2;
 	
 	public FlappyBird(int fps, String title) {
 		super(fps, title);
@@ -85,24 +87,29 @@ public class FlappyBird extends GameWorld{
 		
 		root = new Group();
 		bkg = new ImageView("background.png");
-		bird = new Bird(50, 50, 34, 24, "flappy.png");
-		Pipe p1 = new Pipe(300, 0, 52, 320, "obstacle_bottom.png");
+		bird = new Bird(50, 100, 34, 24, "flappy.png");
+		ground = new Ground(0, 352, 400, 48, "ground.png");
+		ground2 = new Ground(400, 352, 400, 48, "ground.png");
+		Pipe p1 = new Pipe(300, 60, 52, 320, "obstacle_bottom.png");
 		String url = getClass().getResource("/flap.mp3").toString();
 		final Media media = new Media(url);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
 				flap = new MediaPlayer(media);
 				flap.play();
-				((Bird)bird).jump();
+				bird.jump();
 			}
 		});
 		addEntity(bird);
 		addEntity(p1);
+		addEntity(ground);
+		addEntity(ground2);
 		
 		root.getChildren().add(bkg);
 		root.getChildren().add(bird.getNode());
 		root.getChildren().add(p1.getNode());
-		
+		root.getChildren().add(ground.getNode());
+		root.getChildren().add(ground2.getNode());
 		
 		setSceneNodes(root);
 		setGameSurface(new Scene(getSceneNodes(), 400, 400));

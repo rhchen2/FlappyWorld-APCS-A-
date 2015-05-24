@@ -116,7 +116,7 @@ public abstract class GameWorld {
         	for(int j = i + 1; j < entities.size(); j++){
         		Entity a = entities.get(i);
         		Entity b = entities.get(j);
-        		if(a instanceof Sprite && b instanceof Sprite){
+        		if(a instanceof Bird && (b instanceof Sprite && !(b instanceof Bird))){
         			if(((Sprite)a).collide((Sprite)b)){
         				gameOver = true;
         				System.out.println("Collide");
