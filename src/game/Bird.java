@@ -44,6 +44,8 @@ public class Bird extends Sprite{
 	}
 	public void update(){
 		
+		rect = new Rectangle(x, y, width, height);
+		
 		if(image.getY() + image.getTranslateY() > 400){
 			killed = true;
 			System.out.println("Gameover");

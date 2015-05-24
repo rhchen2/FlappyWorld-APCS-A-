@@ -1,5 +1,7 @@
 package game;
 
+import javafx.scene.shape.Rectangle;
+
 public class Pipe extends Sprite {
     
     private boolean removed = false;
@@ -10,6 +12,8 @@ public class Pipe extends Sprite {
     public void update(){
     //checking for boundaries
     //update the object
+    	rect = new Rectangle(x, y, width, height);
+    	
     	image.setTranslateX(image.getTranslateX() - 2);
     	if(image.getX() + image.getTranslateX() < -52){
     		image.setX(452);

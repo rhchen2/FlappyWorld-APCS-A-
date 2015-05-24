@@ -9,6 +9,7 @@ public abstract class Sprite extends Entity{
 
     /** Animation for the node */
     
+	protected int width, height;
     
     protected ImageView image;
     
@@ -17,7 +18,11 @@ public abstract class Sprite extends Entity{
     /** velocity vector x direction */
         
     public Sprite(int x, int y, int width, int height, String img){
-    	rect = new Rectangle(x, y, width, height);
+    	this.x = x;
+    	this.y = y;
+    	this.width = width;
+    	this.height = height;
+    	rect = new Rectangle(x, y, x + width, y + height);
     	image = new ImageView(img);
     	image.setX(x);
     	image.setY(y);

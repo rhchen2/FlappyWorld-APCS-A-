@@ -6,6 +6,8 @@ import javafx.scene.Node;
 
 public abstract class Entity {
 
+	protected int x, y;
+	
 	protected Node node;
 	
 	
