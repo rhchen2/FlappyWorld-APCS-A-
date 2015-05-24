@@ -1,8 +1,9 @@
+package game;
+
 import java.util.ArrayList;
-import javafx.animation.Animation;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.animation.TimelineBuilder;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -40,6 +41,7 @@ public abstract class GameWorld {
      * @param title - Title of the application window.
      */
     public GameWorld(final int fps, final String title) {
+    	entities = new ArrayList<Entity>();
         framesPerSecond = fps;
         windowTitle = title;
         // create and set timeline for the game loop
@@ -110,11 +112,14 @@ public abstract class GameWorld {
      *
      */
     protected void checkCollisions() {
-        for(Entity entityA: entities){
-        	for(Entity entityB: entities){
-        		if(entityA instanceof Sprite && entityB instanceof Sprite){
-        			if(((Sprite)entityA).collide((Sprite)entityB){
-        				gameover = true;
+        for(int i = 0; i < entities.size() - 1; i++){
+        	for(int j = i + 1; j < entities.size(); j++){
+        		Entity a = entities.get(i);
+        		Entity b = entities.get(j);
+        		if(a instanceof Sprite && b instanceof Sprite){
+        			if(((Sprite)a).collide((Sprite)b)){
+        				gameOver = true;
+        				System.out.println("Collide");
         			}
         		}
         	}

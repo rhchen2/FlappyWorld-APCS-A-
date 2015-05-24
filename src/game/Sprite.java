@@ -1,5 +1,6 @@
+package game;
 
-import javafx.scene.Node;
+import javafx.geometry.Bounds;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 
@@ -16,7 +17,7 @@ public abstract class Sprite extends Entity{
     /** velocity vector x direction */
         
     public Sprite(int x, int y, int width, int height, String img){
-    	rect = new Rectangle(x, y, width, height);
+    	rect = new Rectangle(x, y, x + width, y + height);
     	image = new ImageView(img);
     	image.setX(x);
     	image.setY(y);
@@ -31,6 +32,9 @@ public abstract class Sprite extends Entity{
     public Rectangle getRect(){
     	return rect;
     }
+    public Bounds getBounds(){
+    	return rect.getBoundsInParent();
+    }
 
     /**
      * Did this sprite collide into the other sprite?
@@ -39,7 +43,7 @@ public abstract class Sprite extends Entity{
      * @return
      */
     public boolean collide(Sprite other){
-    	return this.getRect().intersects(other.getRect());
+    	return this.getBounds().intersects(other.getBounds());
     }
     
 }

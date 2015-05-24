@@ -1,17 +1,21 @@
+package game;
+
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Reflection;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class FlappyBird extends GameWorld{
 	
@@ -23,7 +27,7 @@ public class FlappyBird extends GameWorld{
 	}
 	private Button button = null;
 	private Group root = null;
-	private ImageView bkgrd = null ;
+	private ImageView bkg = null ;
 	private Node flappy = null;
 	
 	private void addActionEventHandler(){
@@ -82,8 +86,7 @@ public class FlappyBird extends GameWorld{
 		root = new Group();
 		bkg = new ImageView("background.png");
 		bird = new Bird(50, 50, 34, 24, "flappy.png");
-		Pipe p1 = new Pipe();
-		Pipe p2 = new Pipe();
+		Pipe p1 = new Pipe(300, 0, 52, 320, "obstacle_bottom.png");
 		String url = getClass().getResource("/flap.mp3").toString();
 		final Media media = new Media(url);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
@@ -95,10 +98,10 @@ public class FlappyBird extends GameWorld{
 		});
 		addEntity(bird);
 		addEntity(p1);
-		addEntity(p2);
 		
 		root.getChildren().add(bkg);
 		root.getChildren().add(bird.getNode());
+		root.getChildren().add(p1.getNode());
 		
 		
 		setSceneNodes(root);
@@ -111,5 +114,6 @@ public class FlappyBird extends GameWorld{
 	public void updateEntities(){
 		super.updateEntities();
 	}
+	
 
 }

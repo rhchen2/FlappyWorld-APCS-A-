@@ -1,4 +1,8 @@
+package game;
+
 import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
@@ -12,17 +16,12 @@ public class Bird extends Sprite{
 	private boolean jumped = false;
 	public double startY;
 	private boolean killed = false;
-	private TranslateTransition jump;
+	private Timeline timeline;
+	private KeyValue kv;
 	
 	public Bird(int x, int y, int width, int height, String img){
 		super(x, y, width, height, img);
-		jump = new TranslateTransition(Duration.millis(3000), image);
-		jump.setCycleCount(Timeline.INDEFINITE);
-		jump.setInterpolator(new Interpolator(){
-			protected double curve(double t){
-				return .75 * t - 1.5 * t * t;
-			}
-		});
+		 
 
 		
 	}		
@@ -30,13 +29,24 @@ public class Bird extends Sprite{
 	
 	
 	public void jump(){
-		jump.play();
+		timeline = new Timeline();
+        timeline.setCycleCount(1);
+        kv = new KeyValue(image.translateYProperty(), -1000, new Interpolator() {
+                @Override
+                        protected double curve(double t) {
+                                return .75 * t - 1.5 * t * t;
+                        }
+        });
+        KeyFrame flap = new KeyFrame(new Duration(2000), kv);
+        timeline.getKeyFrames().add(flap);
+        timeline.setAutoReverse(false);
+		timeline.play();
 	}
 	public void update(){
-		jump.setToY(image.translateYProperty());
-
-		if(image.translateYProperty() > 400){
+		
+		if(image.getY() + image.getTranslateY() > 400){
 			killed = true;
+			System.out.println("Gameover");
 		}
 		
 	}

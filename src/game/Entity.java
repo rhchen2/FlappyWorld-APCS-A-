@@ -1,3 +1,5 @@
+package game;
+
 import javafx.scene.Node;
 
 

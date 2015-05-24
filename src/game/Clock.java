@@ -1,5 +1,8 @@
 package game;
 
+import javafx.scene.text.Text;
+
+
 public class Clock extends Entity{
     
     //the node in this class will be a Text
