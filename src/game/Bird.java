@@ -34,26 +34,27 @@ public class Bird extends Sprite{
         kv = new KeyValue(image.translateYProperty(), -1000, new Interpolator() {
                 @Override
                         protected double curve(double t) {
-                                return .75 * t - 1.5 * t * t;
+                                return .6 * t - 1.5 * t * t;
                         }
         });
-        KeyFrame flap = new KeyFrame(new Duration(2000), kv);
+        KeyFrame flap = new KeyFrame(new Duration(2100), kv);
         timeline.getKeyFrames().add(flap);
         timeline.setAutoReverse(false);
 		timeline.play();
 	}
 	public void update(){
 		
-		rect = new Rectangle(x, y, width, height);
+		rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
 		
-		if(image.getY() + image.getTranslateY() > 400){
+		if(image.getY() + image.getTranslateY() > 320){
 			killed = true;
+			timeline.pause();
 			System.out.println("Gameover");
 		}
 		
 	}
 	
-	public boolean killed(){
+	public boolean isKilled(){
 		return killed;
 	}
 	

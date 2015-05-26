@@ -22,7 +22,7 @@ public abstract class Sprite extends Entity{
     	this.y = y;
     	this.width = width;
     	this.height = height;
-    	rect = new Rectangle(x, y, x + width, y + height);
+    	rect = new Rectangle(x, y, width, height);
     	image = new ImageView(img);
     	image.setX(x);
     	image.setY(y);

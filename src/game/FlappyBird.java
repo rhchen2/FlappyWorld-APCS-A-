@@ -103,6 +103,9 @@ public class FlappyBird extends GameWorld{
 				bird.jump();
 			}
 		});
+		if(bird.isKilled()){
+			//gameLoop.pause();
+		}
 		addEntity(bird);
 		addEntity(p1);
 		addEntity(p2);
