@@ -1,5 +1,8 @@
 package game;
 
+import java.io.File;
+import java.util.Random;
+
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -111,10 +114,24 @@ public class FlappyBird extends GameWorld{
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
 				
-				flap = new MediaPlayer(media);
-				flap.play();
-				bird.jump();
+				
+						bird.jump();
+				
+					
+						String file = "Desktop/FlappyWorld-APCS-A-/src/sounds";
+						File dir = new File(file);
+						File[] files = dir.listFiles();
+						File selected = files[new Random().nextInt(files.length)];
+						System.out.print(selected);
+						String select = getClass().getResource("/" + selected.toString()).toString();
+						final Media media = new Media(select);
+						flap = new MediaPlayer(media);
+						flap.play();
+					
+				}
+				
 				// !!!LAGGY IMPLEMENTATION!!!
+				
 				/*double random = Math.random() * 20;
 					if ( random <= 1.00){
 						flap = new MediaPlayer(media);
@@ -151,8 +168,8 @@ public class FlappyBird extends GameWorld{
 						flap.play();
 						bird.jump();
 					}*/
-			}
-		});
+			});
+		
 		if(bird.isKilled()){
 			//gameLoop.pause();
 		}
