@@ -87,7 +87,7 @@ public class FlappyBird extends GameWorld{
 		
 		root = new Group();
 		bkg = new ImageView("background.png");
-		bird = new Bird(50, 100, 34, 24, "flappy.png");
+		bird = new Bird(50, 100, 34, 24, "SuperMarioJumping.png");
 		ground = new Ground(0, 352, 400, 48, "ground.png");
 		ground2 = new Ground(400, 352, 400, 48, "ground.png");
 		Pipe p1 = new Pipe(452, 200, 52, 320, "obstacle_bottom.png");
@@ -95,6 +95,13 @@ public class FlappyBird extends GameWorld{
 		Pipe p3 = new Pipe(652, 260, 52, 320, "obstacle_bottom.png");
 		Pipe p4 = new Pipe(652, -180, 52, 320, "obstacle_top.png");
 		String url = getClass().getResource("/flap.mp3").toString();
+		String url2 = getClass().getResource("/mario_mamma-mia.mp3").toString();
+		String url3 = getClass().getResource("/mario_okey-dokey.mp3").toString();
+		String url4 = getClass().getResource("/mario_open_salami.mp3").toString();
+		String url5 = getClass().getResource("/mario_ow_3.mp3").toString();
+		String url6 = getClass().getResource("/mario_ow_4.mp3").toString();
+		String url7 = getClass().getResource("/mario_way_to_go.mp3").toString();
+		String url8 = getClass().getResource("/mario_ya-hoo.mp3").toString();
 		final Media media = new Media(url);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
