@@ -94,20 +94,63 @@ public class FlappyBird extends GameWorld{
 		Pipe p2 = new Pipe(452, -240, 52, 320, "obstacle_top.png");
 		Pipe p3 = new Pipe(652, 260, 52, 320, "obstacle_bottom.png");
 		Pipe p4 = new Pipe(652, -180, 52, 320, "obstacle_top.png");
-		String url = getClass().getResource("/flap.mp3").toString();
+		String url = getClass().getResource("/mario_ya-hoo.mp3").toString();
 		String url2 = getClass().getResource("/mario_mamma-mia.mp3").toString();
 		String url3 = getClass().getResource("/mario_okey-dokey.mp3").toString();
 		String url4 = getClass().getResource("/mario_open_salami.mp3").toString();
 		String url5 = getClass().getResource("/mario_ow_3.mp3").toString();
 		String url6 = getClass().getResource("/mario_ow_4.mp3").toString();
 		String url7 = getClass().getResource("/mario_way_to_go.mp3").toString();
-		String url8 = getClass().getResource("/mario_ya-hoo.mp3").toString();
 		final Media media = new Media(url);
+		final Media media2 = new Media(url2);
+		final Media media3 = new Media(url3);
+		final Media media4 = new Media(url4);
+		final Media media5 = new Media(url5);
+		final Media media6 = new Media(url6);
+		final Media media7 = new Media(url7);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
+				
 				flap = new MediaPlayer(media);
 				flap.play();
 				bird.jump();
+				// !!!LAGGY IMPLEMENTATION!!!
+				/*double random = Math.random() * 20;
+					if ( random <= 1.00){
+						flap = new MediaPlayer(media);
+						flap.play();
+						bird.jump();
+					}
+					else if( random <= 2.00){
+						flap = new MediaPlayer(media2);
+						flap.play();
+						bird.jump();
+					}
+					else if( random <= 3.00){
+						flap = new MediaPlayer(media3);
+						flap.play();
+						bird.jump();
+					}
+					else if( random <= 4.00){
+						flap = new MediaPlayer(media4);
+						flap.play();
+						bird.jump();
+					}
+					else if( random <= 5.00){
+						flap = new MediaPlayer(media5);
+						flap.play();
+						bird.jump();
+					}
+					else if( random <= 6.00){
+						flap = new MediaPlayer(media6);
+						flap.play();
+						bird.jump();
+					}
+					else if( random <= 7.00){
+						flap = new MediaPlayer(media7);
+						flap.play();
+						bird.jump();
+					}*/
 			}
 		});
 		if(bird.isKilled()){
