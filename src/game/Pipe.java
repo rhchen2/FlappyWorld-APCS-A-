@@ -12,7 +12,7 @@ public class Pipe extends Sprite {
     public void update(){
     //checking for boundaries
     //update the object
-    	rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
+    	//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
     	
     	image.setTranslateX(image.getTranslateX() - 2);
     	if(image.getX() + image.getTranslateX() < -52){
