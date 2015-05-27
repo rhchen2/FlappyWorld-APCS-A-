@@ -167,13 +167,13 @@ public class FlappyBird extends GameWorld{
 	public void initialize(Stage primaryStage){
 		root = new Group();
 		bkg = new ImageView("background.png");
-		bird = new Bird(50, 100, 34, 24, "flappy.png");
-		ground = new Ground(0, 352, 400, 48, "ground.png");
-		ground2 = new Ground(400, 352, 400, 48, "ground.png");
-		 p1 = new Pipe(452, 200, 52, 320, "obstacle_bottom.png");
-		 p2 = new Pipe(452, -240, 52, 320, "obstacle_top.png");
-		 p3 = new Pipe(652, 260, 52, 320, "obstacle_bottom.png");
-		 p4 = new Pipe(652, -180, 52, 320, "obstacle_top.png");
+		bird = new Bird(50, 100, "flappy.png");
+		ground = new Ground(0, 352, "ground.png");
+		ground2 = new Ground(400, 352, "ground.png");
+		 p1 = new Pipe(452, 200, "obstacle_bottom.png");
+		 p2 = new Pipe(452, -240, "obstacle_top.png");
+		 p3 = new Pipe(652, 260, "obstacle_bottom.png");
+		 p4 = new Pipe(652, -180, "obstacle_top.png");
 		String url = getClass().getResource("/flap.mp3").toString();
 		final Media media = new Media(url);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
