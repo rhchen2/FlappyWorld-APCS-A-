@@ -34,6 +34,7 @@ public class Bird extends Sprite{
 	public void reset(int y){
 		image.setY(y);
 		image.setTranslateY(0);
+		setDrop(false);
 	}
 	public void jump(){
 		
@@ -55,17 +56,22 @@ public class Bird extends Sprite{
         	}
         });
 		//timeline.play();
-		
+		if(!gameOver)
 		velocity = 6;
 		
 	}
 	public void update(){
+<<<<<<< HEAD
+		rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
+=======
 		
 		//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
 		image.setTranslateY(image.getTranslateY() - (velocity + accel));
+>>>>>>> 7285e09ce36f02ec2ae3bb0b67931db649b8ac2c
 		if(drop){
-		velocity-=.25;
-		//accel -= .01;
+			image.setTranslateY(image.getTranslateY() - (velocity + accel));
+			velocity-=.25;
+			//accel -= .01;
 		}
 		if(image.getY() + image.getTranslateY() > 320){
 			killed = true;
@@ -92,13 +98,14 @@ public class Bird extends Sprite{
 	public boolean isKilled(){
 		return killed;
 	}
-
-
-	@Override
-	public void reset() {
-		// TODO Auto-generated method stub
-		
+	public boolean getDrop(){
+		return drop;
 	}
+	public void setKilled(boolean killed){
+		this.killed = killed;
+	}
+
+
 	
 	
 	
