@@ -104,6 +104,8 @@ public class FlappyBird extends GameWorld{
 		String url5 = getClass().getResource("/mario_ow_3.mp3").toString();
 		String url6 = getClass().getResource("/mario_ow_4.mp3").toString();
 		String url7 = getClass().getResource("/mario_way_to_go.mp3").toString();
+		String[] urls = {url, url2, url3};
+		int counter = 0;
 		final Media media = new Media(url);
 		final Media media2 = new Media(url2);
 		final Media media3 = new Media(url3);
@@ -114,7 +116,11 @@ public class FlappyBird extends GameWorld{
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
 				
-				
+				counter++;
+				Media med = new Media(urls[counter % urls.length]);
+				if(counter > 30){
+					counter = 0;
+				}
 						bird.jump();
 				
 					
