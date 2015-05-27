@@ -34,6 +34,8 @@ public abstract class Sprite extends Entity{
      */
     public abstract void update();
     
+    public abstract void reset();
+    
     public Rectangle getRect(){
     	return rect;
     }
@@ -49,6 +51,12 @@ public abstract class Sprite extends Entity{
      */
     public boolean collide(Sprite other){
     	return this.getBounds().intersects(other.getBounds());
+    }
+    public ImageView getImage(){
+    	return image;
+    }
+    public void stop(){
+    	image.setTranslateX(0);
     }
     
 }

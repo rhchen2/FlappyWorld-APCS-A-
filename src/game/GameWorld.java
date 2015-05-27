@@ -14,10 +14,10 @@ import javafx.util.Duration;
 
 public abstract class GameWorld {
 
-	private ArrayList<Entity> entities;
+	protected ArrayList<Entity> entities;
 	
 	//List of objects that will kill Bird
-	private ArrayList<Sprite> enemies;
+	protected ArrayList<Sprite> enemies;
 	
     /** The JavaFX Scene as the game surface */
     private Scene gameSurface;
@@ -27,7 +27,7 @@ public abstract class GameWorld {
     private static Timeline gameLoop;
 
     /** Number of frames per second. */
-    private final int framesPerSecond;
+    //private final int framesPerSecond;
 
     /** Title in the application window.*/
     private final String windowTitle;
@@ -47,20 +47,18 @@ public abstract class GameWorld {
     public GameWorld(final int fps, final String title) {
     	entities = new ArrayList<Entity>();
     	enemies = new ArrayList<Sprite>();
-        framesPerSecond = fps;
+        //framesPerSecond = fps;
         windowTitle = title;
         // create and set timeline for the game loop
         buildAndSetGameLoop();
     }
 	
-    public boolean gameOver(){
-    	return gameOver;
-    }
+    
     /**
      * Builds and sets the game loop ready to be started.
      */
-    protected final void buildAndSetGameLoop() {
-    	
+    protected void buildAndSetGameLoop() {
+    	/*
     	Duration frames = Duration.millis(1000/framesPerSecond);
     	
     	KeyFrame loop = new KeyFrame(frames, new EventHandler<ActionEvent>(){
@@ -74,6 +72,7 @@ public abstract class GameWorld {
     	timeLine.setCycleCount(Timeline.INDEFINITE);
     	timeLine.getKeyFrames().add(loop);
     	setGameLoop(timeLine);
+    	*/
        
     }
 
@@ -89,9 +88,11 @@ public abstract class GameWorld {
      * objects.
      *
      */
+    /*
     public void beginGameLoop() {
         gameLoop.play();
     }
+    */
 
     /**
      * Updates each game sprite in the game world. This method will
@@ -124,6 +125,7 @@ public abstract class GameWorld {
         		if(a instanceof Bird){
         			if(((Sprite)a).collide(b)){
         				gameOver = true;
+        				
         				System.out.println("Collide");
         			}
         		}
@@ -159,9 +161,11 @@ public abstract class GameWorld {
      * Returns the frames per second.
      * @return int The frames per second.
      */
+    /*
     protected int getFramesPerSecond() {
         return framesPerSecond;
     }
+    */
 
     /**
      * Returns the game's window title.

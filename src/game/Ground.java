@@ -13,6 +13,9 @@ public class Ground extends Sprite{
     		image.setTranslateX(0);
     	}
     }
+    public void reset(){
+    	
+    }
     
   
 }
