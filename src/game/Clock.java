@@ -9,6 +9,8 @@ public class Clock extends Entity{
     
     private long startTime;
     private Text text;
+    private int seconds;
+    private int minutes;
   
     public Clock(){
         startTime = System.currentTimeMillis();
@@ -17,7 +19,8 @@ public class Clock extends Entity{
     }
   
     public void update(){
-      
+    	long now = System.currentTimeMillis();
+    	seconds = (now / startTime);
     }
 
 }

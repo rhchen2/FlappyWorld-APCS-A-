@@ -70,6 +70,7 @@ public class FlappyBird extends GameWorld{
         				}
         				gameOver = true;
         				bird.setKilled(false);
+        				bird.setJump(false);
         				
         			}
         		}
@@ -103,7 +104,7 @@ public class FlappyBird extends GameWorld{
 	   restart.setLayoutY(200);
 	   setGameOver(true);
 	   movePipes(false);
-	   gameOver = false;
+	   //gameOver = false;
    }
    public void movePipes(boolean move){
 	   p1.setMoving(move);
@@ -205,6 +206,7 @@ public class FlappyBird extends GameWorld{
 					
 				}
 				if(!gameOver){
+					bird.setJump(true);
 					bird.jump();
 				}
 				bird.setDrop(true);

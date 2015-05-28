@@ -55,13 +55,13 @@ public class Bird extends Sprite{
         	}
         });
 		
-		if(!gameOver)
+		if(!gameOver && jumped)
 		velocity = 6;
 		
 	}
 	public void update(){
 	
-		if(drop){
+		if(drop && jumped){
 			
 			image.setTranslateY(image.getTranslateY() - (velocity + accel));
 			velocity-=.25;
@@ -95,6 +95,9 @@ public class Bird extends Sprite{
 	}
 	public void setKilled(boolean killed){
 		this.killed = killed;
+	}
+	public void setJump(boolean jump){
+		this.jumped = jump;
 	}
 
 
