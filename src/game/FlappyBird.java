@@ -24,16 +24,9 @@ public class FlappyBird extends GameWorld{
 	private MediaPlayer flap;
 	private Ground ground;
 	private Ground ground2;
-	private boolean clicked = false;
-	private boolean restar = false;
-	private boolean noise = true;
 	private Button restart;
-	private boolean gameOver = false;
-	private boolean playing = false;
+	private boolean gameOver;
 	private ImageView title;
-	private int pipeDistanceWidth;
-	private int pipeDistanceHeight;
-	private int pipeOriginX;
 	public FlappyBird(int fps, String title) {
 		super(fps, title);
 		gameOver = false;
@@ -80,15 +73,7 @@ public class FlappyBird extends GameWorld{
         		Sprite b = enemies.get(j);
         		if(a instanceof Bird){
         			if(((Sprite)a).collide(b) || bird.isKilled()){
-        				String url = getClass().getResource("/death.mp3").toString();
-        				Media u = new Media(url);
-        				MediaPlayer death = new MediaPlayer(u);
-        				if(noise){
-        					death.play();
-        					noise = false;
-        				}
         				gameOver = true;
-        				bird.setKilled(false);
         				
         			}
         		}
@@ -131,33 +116,10 @@ public class FlappyBird extends GameWorld{
         });
     }
     */
-   public void restart(){
-	   gameOver = false;
-	   playing = false;
-	   noise = true;
-	   setGameOver(false);
-	   movePipes(false);
-	   title.setY(70);
-	   restart.setLayoutY(-145);
-	   reset();
-   }
-   public void setGameOver(boolean gameOver){
-	   for(Sprite sprite: enemies){
-		   sprite.setGameOver(gameOver);
-	   }
-   }
    public void gameOver(){
-	   restart.setLayoutY(145);
-	   setGameOver(true);
-	   movePipes(false);
-	   gameOver = false;
-   }
-   public void movePipes(boolean move){
-	   p1.setMoving(move);
-	   p2.setMoving(move);
-	   p3.setMoving(move);
-	   p4.setMoving(move);
-
+	   for(Sprite sprite: enemies){
+		   sprite.stop();
+	   }
    }
 
         protected void buildAndSetGameLoop() {
@@ -167,13 +129,11 @@ public class FlappyBird extends GameWorld{
     		public void handle(ActionEvent event){
     			updateEntities();
     			if(!gameOver){
+
     				checkCollisions();
     			}
     			else{
     				gameOver();
-    				//if(restar)
-    				//restart();
-    				//restar = false;
     			}
     			
     		}
@@ -197,23 +157,17 @@ public class FlappyBird extends GameWorld{
     }
     public void reset(){
     	
-    	bird.reset(150);
-    	p1.reset(452);
-    	p2.reset(452);
-    	p3.reset(652);
-    	p4.reset(652);
-    }
-    public void setPlaying(boolean playing){
-    	for(Sprite sprite: enemies){
-    		sprite.setPlaying(playing);
+    	for(Entity entity: entities){
+    		if(entity instanceof Sprite){
+    			((Sprite) entity).reset();
+    		}
     	}
+    	
     }
 	public void initialize(Stage primaryStage){
-		pipeDistanceWidth = 200;
-		pipeDistanceHeight = 140;
-		pipeOriginX = 452;
 		root = new Group();
 		bkg = new ImageView("background.png");
+<<<<<<< HEAD
 
 		title = new ImageView("clickrun.png");
 		title.setX(70);
@@ -222,49 +176,32 @@ public class FlappyBird extends GameWorld{
 		restart.setLayoutX(140);
 		restart.setLayoutY(-145);
 		bird = new Bird(50, 150, "flappy.png");
+=======
+		bird = new Bird(50, 100, "flappy.png");
+>>>>>>> parent of ce7c33e... Actual working game now is time for fancy images and sounds
 		ground = new Ground(0, 352, "ground.png");
 		ground2 = new Ground(400, 352, "ground.png");
 		 p1 = new Pipe(452, 200, "obstacle_bottom.png");
 		 p2 = new Pipe(452, -240, "obstacle_top.png");
 		 p3 = new Pipe(652, 260, "obstacle_bottom.png");
 		 p4 = new Pipe(652, -180, "obstacle_top.png");
+<<<<<<< HEAD
 
 		
+=======
+>>>>>>> parent of ce7c33e... Actual working game now is time for fancy images and sounds
 		String url = getClass().getResource("/flap.mp3").toString();
 		final Media media = new Media(url);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
-				title.setY(-100);
-
 				flap = new MediaPlayer(media);
 				flap.play();
-				if(!playing){
-					playing = true;
-					setPlaying(true);
-					movePipes(true);
-					
-				}
-				if(!gameOver){
-					bird.jump();
-				}
+				bird.jump();
 				bird.setDrop(true);
 				loops.play();
 				bird.setAccel(0);
 			}
 		});
-		title.setOnMousePressed(new EventHandler<MouseEvent>(){
-			public void handle(MouseEvent event){
-				restart();
-			}
-		});
-		restart.setOnMousePressed(new EventHandler<MouseEvent>(){
-			
-			public void handle(MouseEvent event){
-				restart.setLayoutY(-145);
-				restart();
-			}
-		});
-		/*
 		bkg.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			public void handle(KeyEvent event){
 				flap = new MediaPlayer(media);
@@ -275,7 +212,6 @@ public class FlappyBird extends GameWorld{
 				bird.setAccel(0);
 			}
 		});
-		*/
 		
 				/*
 		if(bird.isKilled()){
@@ -299,8 +235,6 @@ public class FlappyBird extends GameWorld{
 		root.getChildren().add(p4.getNode());
 		root.getChildren().add(ground.getNode());
 		root.getChildren().add(ground2.getNode());
-		root.getChildren().add(title);
-		root.getChildren().add(restart);
 		
 		setSceneNodes(root);
 		setGameSurface(new Scene(getSceneNodes(), 400, 400));
