@@ -230,7 +230,7 @@ public class FlappyBird extends GameWorld{
 		restart = new Button("Restart");
 		restart.setLayoutX(140);
 		restart.setLayoutY(-145);
-		bird = new Bird(50, 150, 47, 50, "flappy.png");
+		bird = new Bird(50, 150, 47, 50, "SuperMarioJumping.png");
 		ground = new Ground(0, 352, 400, 48 ,"ground.png");
 		ground2 = new Ground(400, 352,400, 48, "ground.png");
 		 p1 = new Pipe(452, 200,52, 320, "obstacle_bottom.png");
@@ -241,7 +241,7 @@ public class FlappyBird extends GameWorld{
 		 p6 = new Pipe(852, -280, 52, 320, "obstacle_top.png");
 		 Group clicks = new Group();
 		 clicks.getChildren().addAll(bird.getNode(), bkg, p1.getNode(), p2.getNode(), p3.getNode(), p4.getNode(), p5.getNode(), p6.getNode());
-		 		String url = getClass().getResource("/flap.mp3").toString();
+		 		String url = getClass().getResource("/jump.mp3").toString();
 		final Media media = new Media(url);
 		clicks.setOnMousePressed(new EventHandler<MouseEvent>(){
 		 	public void handle(MouseEvent event){
