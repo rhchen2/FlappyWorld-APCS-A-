@@ -167,7 +167,7 @@ public class FlappyBird extends GameWorld{
 		pipeOriginX = 452;
 		root = new Group();
 		
-		bkg = new ImageView("Rodriguez.jpg");
+		bkg = new ImageView("background.png");
 		score = new Score(280, 60);
 		title = new ImageView("clickrun.png");
 		title.setX(70);
@@ -175,7 +175,7 @@ public class FlappyBird extends GameWorld{
 		restart = new Button("Restart");
 		restart.setLayoutX(140);
 		restart.setLayoutY(-145);
-		bird = new Bird(50, 150, "deepa.jpg");
+		bird = new Bird(50, 150, "SuperMarioJumping.png");
 		ground = new Ground(0, 352, "ground.png");
 		ground2 = new Ground(400, 352, "ground.png");
 		int a = (int) (Math.random() * 222 + 125);
