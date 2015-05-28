@@ -13,14 +13,14 @@ public abstract class Sprite extends Entity{
     protected boolean playing = false;
     protected ImageView image;
     protected boolean gameOver = false;
-    protected Rectangle rect;
+   
     /** Current display node */
     /** velocity vector x direction */
-        
-    public Sprite(int x, int y, int width, int height, String img){
+       
+    public Sprite(int x, int y, String img){
     	this.x = x;
     	this.y = y;
-    	//rect = new Rectangle(x, y, width, height);
+    	
     	image = new ImageView(img);
     	image.setX(x);
     	image.setY(y);
@@ -32,17 +32,7 @@ public abstract class Sprite extends Entity{
      */
     public abstract void update();
     
-    //public abstract void reset();
-    
-    //public abstract void reset();
-    
-    public Rectangle getRect(){
-    	return rect;
-    }
-    public Bounds getBounds(){
-    	return rect.getBoundsInParent();
-    }
-    
+
     /**
      * Did this sprite collide into the other sprite?
      *
@@ -50,8 +40,9 @@ public abstract class Sprite extends Entity{
      * @return
      */
     public boolean collide(Sprite other){
+    	//return false;
     	return image.getBoundsInParent().intersects(other.getImage().getBoundsInParent());
-    	//return this.getBounds().intersects(other.getBounds());
+    	
     }
     public ImageView getImage(){
     	return image;
