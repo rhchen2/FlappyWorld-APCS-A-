@@ -15,12 +15,10 @@ public class Pipe extends Sprite {
     //checking for boundaries
     //update the object
     	rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
-    	if(!gameOver && moving){
-    		image.setTranslateX(image.getTranslateX() - 1);
-    	}
-    	//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
     	
-    	image.setTranslateX(image.getTranslateX() - 2);
+    	if(!gameOver && moving){
+    		image.setTranslateX(image.getTranslateX() - 2);
+    	}
     	if(image.getX() + image.getTranslateX() < -52){
     		image.setX(452);
     		image.setTranslateX(0);
