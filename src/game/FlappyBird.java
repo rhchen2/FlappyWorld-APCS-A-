@@ -214,29 +214,22 @@ public class FlappyBird extends GameWorld{
 		pipeOriginX = 452;
 		root = new Group();
 		bkg = new ImageView("background.png");
-<<<<<<< HEAD
+
 		title = new ImageView("clickrun.png");
 		title.setX(70);
 		title.setY(70);
 		restart = new Button("Restart");
 		restart.setLayoutX(140);
 		restart.setLayoutY(-145);
-		bird = new Bird(50, 150, 34, 24, "flappy.png");
-		ground = new Ground(0, 352, 400, 48, "ground.png");
-		ground2 = new Ground(400, 352, 400, 48, "ground.png");
-		 p1 = new Pipe(452, 200, 52, 320, "obstacle_bottom.png");
-		 p2 = new Pipe(452, -240, 52, 320, "obstacle_top.png");
-		 p3 = new Pipe(652, 260, 52, 320, "obstacle_bottom.png");
-		 p4 = new Pipe(652, -180, 52, 320, "obstacle_top.png");
-=======
-		bird = new Bird(50, 100, "flappy.png");
+		bird = new Bird(50, 150, "flappy.png");
 		ground = new Ground(0, 352, "ground.png");
 		ground2 = new Ground(400, 352, "ground.png");
 		 p1 = new Pipe(452, 200, "obstacle_bottom.png");
 		 p2 = new Pipe(452, -240, "obstacle_top.png");
 		 p3 = new Pipe(652, 260, "obstacle_bottom.png");
 		 p4 = new Pipe(652, -180, "obstacle_top.png");
->>>>>>> 7285e09ce36f02ec2ae3bb0b67931db649b8ac2c
+
+		
 		String url = getClass().getResource("/flap.mp3").toString();
 		final Media media = new Media(url);
 		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){

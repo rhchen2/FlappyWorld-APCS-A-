@@ -57,18 +57,17 @@ public class Bird extends Sprite{
         });
 		//timeline.play();
 		if(!gameOver)
-		velocity = 6;
+		velocity = 4;
 		
 	}
 	public void update(){
-<<<<<<< HEAD
-		rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
-=======
+		//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
+
 		
 		//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
 		image.setTranslateY(image.getTranslateY() - (velocity + accel));
->>>>>>> 7285e09ce36f02ec2ae3bb0b67931db649b8ac2c
 		if(drop){
+			
 			image.setTranslateY(image.getTranslateY() - (velocity + accel));
 			velocity-=.25;
 			//accel -= .01;
@@ -105,6 +104,8 @@ public class Bird extends Sprite{
 		this.killed = killed;
 	}
 
+
+	
 
 	
 	

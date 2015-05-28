@@ -32,13 +32,10 @@ public abstract class Sprite extends Entity{
      */
     public abstract void update();
     
-<<<<<<< HEAD
     //public abstract void reset();
     
-=======
-    public abstract void reset();
+    //public abstract void reset();
     /*
->>>>>>> 7285e09ce36f02ec2ae3bb0b67931db649b8ac2c
     public Rectangle getRect(){
     	return rect;
     }

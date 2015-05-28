@@ -8,22 +8,19 @@ public class Pipe extends Sprite {
 	private int reset = 600;
     private boolean removed = false;
     
-    public Pipe(int x, int y, int width, int height, String img){
-        super(x, y, width, height, img);
+    public Pipe(int x, int y, String img){
+        super(x, y, img);
     }
     public void update(){
     //checking for boundaries
     //update the object
-<<<<<<< HEAD
-    	rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
+    	//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
     	if(!gameOver && moving){
-    		image.setTranslateX(image.getTranslateX() - 2);
+    		image.setTranslateX(image.getTranslateX() - 1);
     	}
-=======
     	//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
     	
     	image.setTranslateX(image.getTranslateX() - 2);
->>>>>>> 7285e09ce36f02ec2ae3bb0b67931db649b8ac2c
     	if(image.getX() + image.getTranslateX() < -52){
     		image.setX(452);
     		image.setTranslateX(0);
@@ -39,7 +36,7 @@ public class Pipe extends Sprite {
     	image.setTranslateX(0);
     }
     public void setMoving(boolean moving){
-    	this.moving = moving;;
+    	this.moving = moving;
     }
 	    
 }
