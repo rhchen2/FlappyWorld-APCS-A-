@@ -34,6 +34,7 @@ public class Bird extends Sprite{
 	public void reset(int y){
 		image.setY(y);
 		image.setTranslateY(0);
+		setDrop(false);
 	}
 	public void jump(){
 		
@@ -55,7 +56,6 @@ public class Bird extends Sprite{
         	}
         });
 		//timeline.play();
-<<<<<<< HEAD
 		if(!gameOver)
 		velocity = 4;
 		
@@ -63,26 +63,14 @@ public class Bird extends Sprite{
 	public void update(){
 		//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
 
-=======
-		
-		velocity = 6;
-		
-	}
-	public void update(){
->>>>>>> parent of ce7c33e... Actual working game now is time for fancy images and sounds
 		
 		//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
 		image.setTranslateY(image.getTranslateY() - (velocity + accel));
 		if(drop){
-<<<<<<< HEAD
 			
 			image.setTranslateY(image.getTranslateY() - (velocity + accel));
 			velocity-=.25;
 			//accel -= .01;
-=======
-		velocity-=.25;
-		//accel -= .01;
->>>>>>> parent of ce7c33e... Actual working game now is time for fancy images and sounds
 		}
 		if(image.getY() + image.getTranslateY() > 320){
 			killed = true;
@@ -109,13 +97,14 @@ public class Bird extends Sprite{
 	public boolean isKilled(){
 		return killed;
 	}
-
-
-	@Override
-	public void reset() {
-		// TODO Auto-generated method stub
-		
+	public boolean getDrop(){
+		return drop;
 	}
+	public void setKilled(boolean killed){
+		this.killed = killed;
+	}
+
+
 	
 
 	

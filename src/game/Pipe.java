@@ -4,6 +4,8 @@ import javafx.scene.shape.Rectangle;
 
 public class Pipe extends Sprite {
     
+	private boolean moving = false;
+	private int reset = 600;
     private boolean removed = false;
     
     public Pipe(int x, int y, String img){
@@ -12,13 +14,10 @@ public class Pipe extends Sprite {
     public void update(){
     //checking for boundaries
     //update the object
-<<<<<<< HEAD
     	//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
     	if(!gameOver && moving){
     		image.setTranslateX(image.getTranslateX() - 1);
     	}
-=======
->>>>>>> parent of ce7c33e... Actual working game now is time for fancy images and sounds
     	//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
     	
     	image.setTranslateX(image.getTranslateX() - 2);
@@ -26,9 +25,11 @@ public class Pipe extends Sprite {
     		image.setX(452);
     		image.setTranslateX(0);
     	}
+    	if(gameOver){
+    		//reset(x);
+    	}
     
     }
-<<<<<<< HEAD
     public void reset(int x){
     	this.x = x;
     	image.setX(x);
@@ -36,10 +37,6 @@ public class Pipe extends Sprite {
     }
     public void setMoving(boolean moving){
     	this.moving = moving;
-=======
-    public void reset(){
-    	
->>>>>>> parent of ce7c33e... Actual working game now is time for fancy images and sounds
     }
-    
+	    
 }

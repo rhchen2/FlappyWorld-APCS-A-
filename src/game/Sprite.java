@@ -10,9 +10,9 @@ public abstract class Sprite extends Entity{
     /** Animation for the node */
     
 	protected int width, height;
-    
+    protected boolean playing = false;
     protected ImageView image;
-    
+    protected boolean gameOver = false;
     protected Rectangle rect;
     /** Current display node */
     /** velocity vector x direction */
@@ -32,13 +32,9 @@ public abstract class Sprite extends Entity{
      */
     public abstract void update();
     
-<<<<<<< HEAD
     //public abstract void reset();
     
     //public abstract void reset();
-=======
-    public abstract void reset();
->>>>>>> parent of ce7c33e... Actual working game now is time for fancy images and sounds
     /*
     public Rectangle getRect(){
     	return rect;
@@ -62,6 +58,12 @@ public abstract class Sprite extends Entity{
     }
     public void stop(){
     	image.setTranslateX(0);
+    }
+    public void setGameOver(boolean gameOver){
+    	this.gameOver = gameOver;
+    }
+    public void setPlaying(boolean playing){
+    	this.playing = playing;
     }
     
 }
