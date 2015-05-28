@@ -40,7 +40,7 @@ public class FlappyBird extends GameWorld{
 		gameOver = false;
 	}
 	public static Timeline loops;
-	//private int framesPerSecond;
+	
 	private Button button = null;
 	private Group root = null;
 	private ImageView bkg = null ;
@@ -52,30 +52,7 @@ public class FlappyBird extends GameWorld{
 	private Pipe p5;
 	private Pipe p6;
 	
-	/*
-	private void addActionEventHandler(){
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //TODO: start the drop animation of the bird
-               
-                Timeline tl = new Timeline();
-                tl.setCycleCount(1);
-                KeyValue kv = new KeyValue(flappy.translateYProperty(), 1000, new Interpolator() {
-                        @Override
-                                protected double curve(double t) {
-                                return 1.5 * t * t;
-                                }
-                });
-                KeyFrame drop = new KeyFrame(new Duration(2750), kv);
-                tl.getKeyFrames().add(drop);
-                tl.setAutoReverse(false);
-                tl.play();
-        
-            }
-        });
-    }
-   */
+
 	protected void checkCollisions() {
         for(int i = 0; i < entities.size() - 1; i++){
         	for(int j = 0; j < enemies.size(); j++){
@@ -106,35 +83,7 @@ public class FlappyBird extends GameWorld{
    public Timeline getGameLoop(){
 	   return loops;
    }
-   /*
-    private void addMouseEventHandler(){
-        root.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-            	//Play MP3 File (Flap Sound)
-				String url = getClass().getResource("/mario_ow_3.mp3").toString();
-				Media m = new Media(url);
-				MediaPlayer player = new MediaPlayer(m);
-				player.play();
-				
-                //To click the screen should lift bird
-                Timeline tl = new Timeline();
-                tl.setCycleCount(1);
-                KeyValue kv = new KeyValue(flappy.translateYProperty(), -1000, new Interpolator() {
-                        @Override
-                                protected double curve(double t) {
-                                        return .75 * t - 1.5 * t * t;
-                                }
-                });
-                KeyFrame flap = new KeyFrame(new Duration(3000), kv);
-                tl.getKeyFrames().add(flap);
-                tl.setAutoReverse(false);
-                tl.play();
 
-            }
-        });
-    }
-    */
    public void restart(){
 	   gameOver = false;
 	   playing = false;
@@ -177,9 +126,7 @@ public class FlappyBird extends GameWorld{
     			}
     			else{
     				gameOver();
-    				//if(restar)
-    				//restart();
-    				//restar = false;
+    			
     			}
     			
     		}
@@ -189,14 +136,7 @@ public class FlappyBird extends GameWorld{
     	timeLine.setCycleCount(Timeline.INDEFINITE);
     	timeLine.getKeyFrames().add(loop);
     	loops = timeLine;
-    	/*
-    	loops.setOnFinished(new EventHandler<ActionEvent>(){
-    		public void handle(ActionEvent event){
-    			loops.playFromStart();
-    		}
-    	});
-    	*/
-       
+
         }
     public boolean checkGameOver(){
     	return bird.isKilled();
@@ -204,12 +144,16 @@ public class FlappyBird extends GameWorld{
     public void reset(){
     	
     	bird.reset(150);
-    	p1.reset(452);
-    	p2.reset(452);
-    	p3.reset(652);
-    	p4.reset(652);
-    	p5.reset(852);
-    	p6.reset(852);
+    	int a = (int) (Math.random() * 222 + 125);
+		int b = (int) (Math.random() * 222 + 125);
+		int c = (int) (Math.random() * 222 + 125);
+
+		 p1.reset(452, a);
+		 p2.reset(452, a - 440);
+		 p3.reset(652, b);
+		 p4.reset(652, b - 440);
+		 p5.reset(852, c);
+		 p6.reset(852, c - 440);
     }
     public void setPlaying(boolean playing){
     	for(Sprite sprite: enemies){
@@ -230,31 +174,25 @@ public class FlappyBird extends GameWorld{
 		restart = new Button("Restart");
 		restart.setLayoutX(140);
 		restart.setLayoutY(-145);
-		bird = new Bird(50, 150, 47, 50, "SuperMarioJumping.png");
-		ground = new Ground(0, 352, 400, 48 ,"ground.png");
-		ground2 = new Ground(400, 352,400, 48, "ground.png");
-		 p1 = new Pipe(452, 200,52, 320, "obstacle_bottom.png");
-		 p2 = new Pipe(452, -240, 52, 320,"obstacle_top.png");
-		 p3 = new Pipe(652, 260,52, 320, "obstacle_bottom.png");
-		 p4 = new Pipe(652, -180,52, 320, "obstacle_top.png");
-		 p5 = new Pipe(852, 160, 52, 320, "obstacle_bottom.png");
-		 p6 = new Pipe(852, -280, 52, 320, "obstacle_top.png");
-		 Group clicks = new Group();
-		 clicks.getChildren().addAll(bird.getNode(), bkg, p1.getNode(), p2.getNode(), p3.getNode(), p4.getNode(), p5.getNode(), p6.getNode());
-		 		String url = getClass().getResource("/jump.mp3").toString();
+		bird = new Bird(50, 150, "SuperMarioJumping.png");
+		ground = new Ground(0, 352, "ground.png");
+		ground2 = new Ground(400, 352, "ground.png");
+		int a = (int) (Math.random() * 222 + 125);
+		int b = (int) (Math.random() * 222 + 125);
+		int c = (int) (Math.random() * 222 + 125);
+
+		 p1 = new Pipe(452, a, "obstacle_bottom.png");
+		 p2 = new Pipe(452, a - 440, "obstacle_top.png");
+		 p3 = new Pipe(652, b, "obstacle_bottom.png");
+		 p4 = new Pipe(652, b - 440, "obstacle_top.png");
+		 p5 = new Pipe(852, c, "obstacle_bottom.png");
+		 p6 = new Pipe(852, c - 440, "obstacle_top.png");
+
+		String url = getClass().getResource("/jump.mp3").toString();
+		
 		final Media media = new Media(url);
-		clicks.setOnMousePressed(new EventHandler<MouseEvent>(){
-		 	public void handle(MouseEvent event){
-		 		flap = new MediaPlayer(media);
-				flap.play();
-				if(!gameOver){
-					bird.jump();
-				}
-		 	}
-		 });
-		Node[] clickables = {bird.getNode(), bkg, p1.getNode(), p2.getNode(), p3.getNode(), p4.getNode(), p5.getNode(), p6.getNode()};
-		for(Node clickable: clickables){
-		clickable.setOnMousePressed(new EventHandler<MouseEvent>(){
+		
+		root.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
 				title.setY(-100);
 
@@ -274,12 +212,7 @@ public class FlappyBird extends GameWorld{
 				bird.setAccel(0);
 			}
 		});
-		}
-		title.setOnMousePressed(new EventHandler<MouseEvent>(){
-			public void handle(MouseEvent event){
-				restart();
-			}
-		});
+
 		restart.setOnMousePressed(new EventHandler<MouseEvent>(){
 			
 			public void handle(MouseEvent event){
@@ -287,24 +220,7 @@ public class FlappyBird extends GameWorld{
 				restart();
 			}
 		});
-		/*
-		bkg.setOnKeyPressed(new EventHandler<KeyEvent>(){
-			public void handle(KeyEvent event){
-				flap = new MediaPlayer(media);
-				flap.play();
-				bird.jump();
-				bird.setDrop(true);
-				loops.play();
-				bird.setAccel(0);
-			}
-		});
-		*/
-		
-				/*
-		if(bird.isKilled()){
-			startGame();
-		}
-		*/
+
 		addEntity(bird);
 		addEntity(p1);
 		addEntity(p2);
