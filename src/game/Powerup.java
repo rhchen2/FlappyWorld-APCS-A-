@@ -4,8 +4,8 @@ public abstract class Powerup extends Sprite{
 
 	private String name;
 	
-	public Powerup(String name, int x, int y,int width, int height, String img){
-		super(x, y,width, height, img);
+	public Powerup(int x, int y, String img){
+		super(x, y, img);
 		this.name = name;
 	}
 	
