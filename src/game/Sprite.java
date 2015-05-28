@@ -17,7 +17,7 @@ public abstract class Sprite extends Entity{
     /** Current display node */
     /** velocity vector x direction */
         
-    public Sprite(int x, int y, String img){
+    public Sprite(int x, int y, int width, int height, String img){
     	this.x = x;
     	this.y = y;
     	//rect = new Rectangle(x, y, width, height);
@@ -35,14 +35,14 @@ public abstract class Sprite extends Entity{
     //public abstract void reset();
     
     //public abstract void reset();
-    /*
+    
     public Rectangle getRect(){
     	return rect;
     }
     public Bounds getBounds(){
     	return rect.getBoundsInParent();
     }
-    */
+    
     /**
      * Did this sprite collide into the other sprite?
      *

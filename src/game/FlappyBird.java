@@ -80,6 +80,7 @@ public class FlappyBird extends GameWorld{
         		Sprite b = enemies.get(j);
         		if(a instanceof Bird){
         			if(((Sprite)a).collide(b) || bird.isKilled()){
+        				System.out.println("Hit");
         				String url = getClass().getResource("/death.mp3").toString();
         				Media u = new Media(url);
         				MediaPlayer death = new MediaPlayer(u);
@@ -221,13 +222,13 @@ public class FlappyBird extends GameWorld{
 		restart = new Button("Restart");
 		restart.setLayoutX(140);
 		restart.setLayoutY(-145);
-		bird = new Bird(50, 150, "flappy.png");
-		ground = new Ground(0, 352, "ground.png");
-		ground2 = new Ground(400, 352, "ground.png");
-		 p1 = new Pipe(452, 200, "obstacle_bottom.png");
-		 p2 = new Pipe(452, -240, "obstacle_top.png");
-		 p3 = new Pipe(652, 260, "obstacle_bottom.png");
-		 p4 = new Pipe(652, -180, "obstacle_top.png");
+		bird = new Bird(50, 150, 47, 50, "flappy.png");
+		ground = new Ground(0, 352, 400, 48 ,"ground.png");
+		ground2 = new Ground(400, 352,400, 48, "ground.png");
+		 p1 = new Pipe(452, 200,52, 320, "obstacle_bottom.png");
+		 p2 = new Pipe(452, -240, 52, 320,"obstacle_top.png");
+		 p3 = new Pipe(652, 260,52, 320, "obstacle_bottom.png");
+		 p4 = new Pipe(652, -180,52, 320, "obstacle_top.png");
 
 		
 		String url = getClass().getResource("/flap.mp3").toString();

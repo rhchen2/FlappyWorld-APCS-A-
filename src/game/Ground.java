@@ -4,19 +4,19 @@ public class Ground extends Sprite{
     
 	
 	
-    /*public Ground(int x, int y, int width, int height, String img){
-       // super(x, y, width, height, img);
+    public Ground(int x, int y, int width, int height, String img){
+       super(x, y, width, height, img);
 
     }
-    */
+    /*
     public Ground(int x, int y, String img){
         super(x, y, img);
 
     }
-    
+    */
     public void update(){
     	if(!gameOver){
-    		image.setTranslateX(image.getTranslateX() - 1);
+    		image.setTranslateX(image.getTranslateX() - 2);
     	}
     	if(image.getX() + image.getTranslateX() < -400){
     		image.setX(400);

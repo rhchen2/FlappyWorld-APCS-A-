@@ -22,8 +22,8 @@ public class Bird extends Sprite{
 	private Timeline timeline;
 	private KeyValue kv;
 	
-	public Bird(int x, int y, String img){
-		super(x, y, img);
+	public Bird(int x, int y, int width, int height, String img){
+		super(x, y,width, height, img);
 		 
 		velocity = 0;
 		accel = 0;
@@ -57,15 +57,15 @@ public class Bird extends Sprite{
         });
 		//timeline.play();
 		if(!gameOver)
-		velocity = 4;
+		velocity = 6;
 		
 	}
 	public void update(){
-		//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
+		rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
 
 		
 		//rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
-		image.setTranslateY(image.getTranslateY() - (velocity + accel));
+		//image.setTranslateY(image.getTranslateY() - (velocity + accel));
 		if(drop){
 			
 			image.setTranslateY(image.getTranslateY() - (velocity + accel));
