@@ -21,6 +21,7 @@ import javafx.util.Duration;
 public class FlappyBird extends GameWorld{
 	
 	private Bird bird;
+	private Score score;
 	private MediaPlayer flap;
 	private Ground ground;
 	private Ground ground2;
@@ -48,6 +49,8 @@ public class FlappyBird extends GameWorld{
 	private Pipe p2;
 	private Pipe p3;
 	private Pipe p4;
+	private Pipe p5;
+	private Pipe p6;
 	
 	/*
 	private void addActionEventHandler(){
@@ -79,8 +82,8 @@ public class FlappyBird extends GameWorld{
         		Entity a = entities.get(i);
         		Sprite b = enemies.get(j);
         		if(a instanceof Bird){
+        			
         			if(((Sprite)a).collide(b) || bird.isKilled()){
-        				System.out.println("Hit");
         				String url = getClass().getResource("/death.mp3").toString();
         				Media u = new Media(url);
         				MediaPlayer death = new MediaPlayer(u);
@@ -148,7 +151,7 @@ public class FlappyBird extends GameWorld{
 	   }
    }
    public void gameOver(){
-	   restart.setLayoutY(145);
+	   restart.setLayoutY(200);
 	   setGameOver(true);
 	   movePipes(false);
 	   gameOver = false;
@@ -158,6 +161,8 @@ public class FlappyBird extends GameWorld{
 	   p2.setMoving(move);
 	   p3.setMoving(move);
 	   p4.setMoving(move);
+	   p5.setMoving(move);
+	   p6.setMoving(move);
 
    }
 
@@ -203,6 +208,8 @@ public class FlappyBird extends GameWorld{
     	p2.reset(452);
     	p3.reset(652);
     	p4.reset(652);
+    	p5.reset(852);
+    	p6.reset(852);
     }
     public void setPlaying(boolean playing){
     	for(Sprite sprite: enemies){
@@ -214,8 +221,9 @@ public class FlappyBird extends GameWorld{
 		pipeDistanceHeight = 140;
 		pipeOriginX = 452;
 		root = new Group();
+		
 		bkg = new ImageView("background.png");
-
+		score = new Score(280, 60);
 		title = new ImageView("clickrun.png");
 		title.setX(70);
 		title.setY(70);
@@ -229,11 +237,24 @@ public class FlappyBird extends GameWorld{
 		 p2 = new Pipe(452, -240, 52, 320,"obstacle_top.png");
 		 p3 = new Pipe(652, 260,52, 320, "obstacle_bottom.png");
 		 p4 = new Pipe(652, -180,52, 320, "obstacle_top.png");
-
-		
-		String url = getClass().getResource("/flap.mp3").toString();
+		 p5 = new Pipe(852, 160, 52, 320, "obstacle_bottom.png");
+		 p6 = new Pipe(852, -280, 52, 320, "obstacle_top.png");
+		 Group clicks = new Group();
+		 clicks.getChildren().addAll(bird.getNode(), bkg, p1.getNode(), p2.getNode(), p3.getNode(), p4.getNode(), p5.getNode(), p6.getNode());
+		 		String url = getClass().getResource("/flap.mp3").toString();
 		final Media media = new Media(url);
-		bkg.setOnMousePressed(new EventHandler<MouseEvent>(){
+		clicks.setOnMousePressed(new EventHandler<MouseEvent>(){
+		 	public void handle(MouseEvent event){
+		 		flap = new MediaPlayer(media);
+				flap.play();
+				if(!gameOver){
+					bird.jump();
+				}
+		 	}
+		 });
+		Node[] clickables = {bird.getNode(), bkg, p1.getNode(), p2.getNode(), p3.getNode(), p4.getNode(), p5.getNode(), p6.getNode()};
+		for(Node clickable: clickables){
+		clickable.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
 				title.setY(-100);
 
@@ -253,6 +274,7 @@ public class FlappyBird extends GameWorld{
 				bird.setAccel(0);
 			}
 		});
+		}
 		title.setOnMousePressed(new EventHandler<MouseEvent>(){
 			public void handle(MouseEvent event){
 				restart();
@@ -288,8 +310,11 @@ public class FlappyBird extends GameWorld{
 		addEntity(p2);
 		addEntity(p3);
 		addEntity(p4);
+		addEntity(p5);
+		addEntity(p6);
 		addEntity(ground);
 		addEntity(ground2);
+		addEntity(score);
 		
 		
 		root.getChildren().add(bkg);
@@ -298,10 +323,13 @@ public class FlappyBird extends GameWorld{
 		root.getChildren().add(p2.getNode());
 		root.getChildren().add(p3.getNode());
 		root.getChildren().add(p4.getNode());
+		root.getChildren().add(p5.getNode());
+		root.getChildren().add(p6.getNode());
 		root.getChildren().add(ground.getNode());
 		root.getChildren().add(ground2.getNode());
 		root.getChildren().add(title);
 		root.getChildren().add(restart);
+		root.getChildren().add(score.getNode());
 		
 		setSceneNodes(root);
 		setGameSurface(new Scene(getSceneNodes(), 400, 400));
