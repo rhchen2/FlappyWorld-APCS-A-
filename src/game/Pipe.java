@@ -1,5 +1,6 @@
 package game;
 
+import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
@@ -14,15 +15,21 @@ public class Pipe extends Sprite {
     private Media med;
     private MediaPlayer play;
     
-    public Pipe(int x, int y, int width, int height, String img){
-        super(x, y, width, height, img);
+    
+    public Pipe(int x, int y, String img){
+        super(x, y, img);
         String url = getClass().getResource("/point.mp3").toString();
         med = new Media(url);
+        
     }
-    public void update(){
+
+    public void update() {
+    	
+    }
+    public void update(int y){
     //checking for boundaries
     //update the object
-    	rect = new Rectangle(image.getX() + image.getTranslateX(), image.getY() + image.getTranslateY(), width, height);
+    	
     	
     	if(!gameOver && moving){
     		image.setTranslateX(image.getTranslateX() - 2);
@@ -34,20 +41,28 @@ public class Pipe extends Sprite {
     		point = false;
     	}
     	if(image.getX() + image.getTranslateX() < -52){
-    		image.setX(652);
+    		image.setX(548);
     		image.setTranslateX(0);
+    		image.setY(y);
+    		this.y = y;
+    		
     		point = true;
     	}
     	if(gameOver){
-    		//reset(x);
+    		
     	}
     
     }
-    public void reset(int x){
+    public void reset(int x, int y){
     	this.x = x;
+    	this.y = y;
+    	image.setY(y);
+    	
     	image.setX(x);
     	image.setTranslateX(0);
     	score = 0;
+    	
+    	
     }
     public void setMoving(boolean moving){
     	this.moving = moving;
