@@ -20,7 +20,11 @@ public class Clock extends Entity{
   
     public void update(){
     	long now = System.currentTimeMillis();
-    	seconds = (now / startTime);
+    	seconds = (int)(now / startTime);
+    	if(seconds > 59){
+    		minutes++;
+    		seconds = 0;
+    	}
     }
 
 }

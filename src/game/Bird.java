@@ -55,7 +55,7 @@ public class Bird extends Sprite{
         	}
         });
 		
-		if(!gameOver && jumped)
+		if(!gameOver)
 		velocity = 6;
 		
 	}
