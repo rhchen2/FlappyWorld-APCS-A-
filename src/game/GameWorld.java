@@ -47,7 +47,7 @@ public abstract class GameWorld {
     public GameWorld(final int fps, final String title) {
     	entities = new ArrayList<Entity>();
     	enemies = new ArrayList<Sprite>();
-        //framesPerSecond = fps;
+        
         windowTitle = title;
         // create and set timeline for the game loop
         buildAndSetGameLoop();
@@ -57,25 +57,12 @@ public abstract class GameWorld {
     /**
      * Builds and sets the game loop ready to be started.
      */
+    
     protected void buildAndSetGameLoop() {
-    	/*
-    	Duration frames = Duration.millis(1000/framesPerSecond);
-    	
-    	KeyFrame loop = new KeyFrame(frames, new EventHandler<ActionEvent>(){
-    		public void handle(ActionEvent event){
-    			updateEntities();
-    			checkCollisions();
-    		}
-    	});
-    	
-    	Timeline timeLine = new Timeline();
-    	timeLine.setCycleCount(Timeline.INDEFINITE);
-    	timeLine.getKeyFrames().add(loop);
-    	setGameLoop(timeLine);
-    	*/
+
        
     }
-
+	
     /**
      * Initialize the game world by update the JavaFX Stage.
      * @param primaryStage
@@ -88,11 +75,7 @@ public abstract class GameWorld {
      * objects.
      *
      */
-    /*
-    public void beginGameLoop() {
-        gameLoop.play();
-    }
-    */
+ 
 
     /**
      * Updates each game sprite in the game world. This method will
@@ -101,9 +84,19 @@ public abstract class GameWorld {
      *
      */
     protected void updateEntities() {
-        for(Entity entity: entities){
-        	entity.update();
-        }
+    	for(int i = 0; i < entities.size(); i++) {
+    		Entity e = entities.get(i);
+    		if(e instanceof Pipe) {
+    			int a = (int) (Math.random() * 222 + 125);
+    			((Pipe) e).update(a);
+    			((Pipe) entities.get(i + 1)).update(a - 440);
+    			i++;
+    		}
+    		else {
+    			e.update();
+    		}
+    	}
+    
     }
 
     /** Updates the sprite object's information to position on the game surface.
@@ -161,11 +154,7 @@ public abstract class GameWorld {
      * Returns the frames per second.
      * @return int The frames per second.
      */
-    /*
-    protected int getFramesPerSecond() {
-        return framesPerSecond;
-    }
-    */
+
 
     /**
      * Returns the game's window title.
